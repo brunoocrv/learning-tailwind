@@ -6,7 +6,7 @@ import { MainNavigation } from './MainNavigation'
 import { NavItems } from './NavItems'
 import { UsedSpaceWidget } from './UsedSpaceWidget'
 import { Profile } from '../Profile'
-import { TextfieldRoot, TextfieldControl, TextfieldPrefix } from '../Textfield'
+import { TextfieldRoot, TextfieldControl, TextfieldPrefix } from '../Form/Textfield'
 
 export function Sidebar() {
   return (
