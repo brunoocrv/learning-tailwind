@@ -15,6 +15,7 @@ import {
 } from '@/components/Form/File'
 import { SelectItem, SelectRoot } from '@/components/Form/Select'
 import { TextArea } from '@/components/Form/TextArea'
+import { Button } from '@/components/Button'
 
 export default function Home() {
   return (
@@ -24,7 +25,7 @@ export default function Home() {
       <SettingsTabs />
 
       <div className="mt-6 flex flex-col">
-        <div className="flex items-center justify-between border-b border-zinc-200 pb-5">
+        <div className="flex flex-col justify-between gap-6 border-b border-zinc-200 pb-5 lg:flex-row lg:items-center">
           <div className="space-y-1">
             <h2 className="text-lg font-medium text-zinc-900">Personal info</h2>
             <span className="text-sm text-zinc-500">
@@ -32,19 +33,12 @@ export default function Home() {
             </span>
           </div>
           <div className="flex items-center gap-2">
-            <button
-              type="button"
-              className="rounded-lg border border-zinc-300 px-4 py-2 text-sm font-semibold text-zinc-700 shadow-sm hover:bg-zinc-50"
-            >
+            <Button type="button" variant="outline">
               Cancel
-            </button>
-            <button
-              className="shaow-sm rounded-lg bg-violet-600 px-4 py-2 text-sm font-semibold text-white hover:bg-violet-700"
-              type="submit"
-              form="settings"
-            >
+            </Button>
+            <Button type="submit" form="settings" variant="primary">
               Save
-            </button>
+            </Button>
           </div>
         </div>
         <form
@@ -52,23 +46,31 @@ export default function Home() {
           action=""
           className="mt-6 flex w-full flex-col gap-5 divide-y divide-zinc-200"
         >
-          <div className="grid grid-cols-form gap-3">
+          <div className="flex flex-col gap-3 lg:grid lg:grid-cols-form">
             <label
               htmlFor="firstName"
               className="text-sm font-medium text-zinc-700"
             >
               Name
             </label>
-            <div className="grid grid-cols-2 gap-6">
+            <div className="flex flex-col gap-6 lg:grid lg:grid-cols-2">
               <TextfieldRoot>
                 <TextfieldControl id="firstName" defaultValue="Bruno" />
               </TextfieldRoot>
-              <TextfieldRoot>
-                <TextfieldControl defaultValue="Carvalho" />
-              </TextfieldRoot>
+              <div className="flex flex-col gap-3 lg:block">
+                <label
+                  htmlFor="lastName"
+                  className="text-sm font-medium text-zinc-700 lg:sr-only"
+                >
+                  Last Name
+                </label>
+                <TextfieldRoot>
+                  <TextfieldControl id="lastName" defaultValue="Carvalho" />
+                </TextfieldRoot>
+              </div>
             </div>
           </div>
-          <div className="grid grid-cols-form gap-3 pt-5">
+          <div className="flex flex-col gap-3 pt-5 lg:grid lg:grid-cols-form">
             <label
               htmlFor="email"
               className="text-sm font-medium text-zinc-700"
@@ -86,7 +88,7 @@ export default function Home() {
               />
             </TextfieldRoot>
           </div>
-          <div className="grid grid-cols-form gap-3 pt-5">
+          <div className="flex flex-col gap-3 pt-5 lg:grid lg:grid-cols-form">
             <label
               htmlFor="photo"
               className="text-sm font-medium text-zinc-700"
@@ -96,13 +98,13 @@ export default function Home() {
                 This will be displayed on your profile.
               </span>
             </label>
-            <FileRoot className="flex items-start gap-5">
+            <FileRoot className="flex flex-col gap-5 lg:flex-row lg:items-start">
               <FilePreview />
               <FileTrigger />
               <FileControl />
             </FileRoot>
           </div>
-          <div className="grid grid-cols-form gap-3 pt-5">
+          <div className="flex flex-col gap-3 pt-5 lg:grid lg:grid-cols-form">
             <label htmlFor="role" className="text-sm font-medium text-zinc-700">
               Role
             </label>
@@ -110,7 +112,7 @@ export default function Home() {
               <TextfieldControl id="role" defaultValue="Frontend Developer" />
             </TextfieldRoot>
           </div>
-          <div className="grid grid-cols-form gap-3 pt-5">
+          <div className="flex flex-col gap-3 pt-5 lg:grid lg:grid-cols-form">
             <label
               htmlFor="country"
               className="text-sm font-medium text-zinc-700"
@@ -124,7 +126,7 @@ export default function Home() {
               <SelectItem value="italy" text="Italy" />
             </SelectRoot>
           </div>
-          <div className="grid grid-cols-form gap-3 pt-5">
+          <div className="flex flex-col gap-3 pt-5 lg:grid lg:grid-cols-form">
             <label
               htmlFor="timezone"
               className="text-sm font-medium text-zinc-700"
@@ -142,7 +144,7 @@ export default function Home() {
               />
             </SelectRoot>
           </div>
-          <div className="grid grid-cols-form gap-3 pt-5">
+          <div className="flex flex-col gap-3 pt-5 lg:grid lg:grid-cols-form">
             <label htmlFor="bio" className="text-sm font-medium text-zinc-700">
               Bio
               <span className="mt-0.5 block text-sm font-normal text-zinc-500">
@@ -150,8 +152,8 @@ export default function Home() {
               </span>
             </label>
             <div className="space-y-3">
-              <div className="grid grid-cols-2 gap-3">
-                <SelectRoot defaultValue="normal">
+              <div className="flex flex-col gap-3 lg:grid lg:grid-cols-2">
+                <SelectRoot defaultValue="normal" placeholder="">
                   <SelectItem
                     value="normalText"
                     defaultChecked
@@ -160,33 +162,21 @@ export default function Home() {
                 </SelectRoot>
 
                 <div className="flex items-center gap-1">
-                  <button
-                    type="button"
-                    className="rounded-md p-2 hover:bg-zinc-50"
-                  >
+                  <Button type="button" variant="ghost">
                     <Bold className="h-4 w-4 text-zinc-500" strokeWidth={3} />
-                  </button>
-                  <button
-                    type="button"
-                    className="rounded-md p-2 hover:bg-zinc-50"
-                  >
+                  </Button>
+                  <Button type="button" variant="ghost">
                     <Italic className="h-4 w-4 text-zinc-500" strokeWidth={3} />
-                  </button>
-                  <button
-                    type="button"
-                    className="rounded-md p-2 hover:bg-zinc-50"
-                  >
+                  </Button>
+                  <Button type="button" variant="ghost">
                     <Link className="h-4 w-4 text-zinc-500" strokeWidth={3} />
-                  </button>
-                  <button
-                    type="button"
-                    className="rounded-md p-2 hover:bg-zinc-50"
-                  >
+                  </Button>
+                  <Button type="button" variant="ghost">
                     <ListOrdered
                       className="h-4 w-4 text-zinc-500"
                       strokeWidth={3}
                     />
-                  </button>
+                  </Button>
                 </div>
                 <TextArea
                   defaultValue="I'm the best frontend developer, hire me!!"
@@ -195,7 +185,7 @@ export default function Home() {
               </div>
             </div>
           </div>
-          <div className="grid grid-cols-form gap-3 pt-5">
+          <div className="flex flex-col gap-3 pt-5 lg:grid lg:grid-cols-form">
             <label
               htmlFor="projects"
               className="text-sm font-medium text-zinc-700"
@@ -214,18 +204,12 @@ export default function Home() {
           </div>
 
           <div className="flex-items flex justify-end gap-2 pt-5">
-            <button
-              type="button"
-              className="rounded-lg border border-zinc-300 px-4 py-2 text-sm font-semibold text-zinc-700 shadow-sm hover:bg-zinc-50"
-            >
+            <Button type="button" variant="outline">
               Cancel
-            </button>
-            <button
-              className="shaow-sm rounded-lg bg-violet-600 px-4 py-2 text-sm font-semibold text-white hover:bg-violet-700"
-              type="submit"
-            >
+            </Button>
+            <Button type="submit" variant="primary">
               Save
-            </button>
+            </Button>
           </div>
         </form>
       </div>
