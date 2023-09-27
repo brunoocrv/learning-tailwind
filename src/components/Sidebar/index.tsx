@@ -19,9 +19,15 @@ import { Button } from '../Button'
 
 export function Sidebar() {
   return (
-    <Collapsible.Root className="fixed left-0 right-0 top-0 z-20 flex flex-col gap-6 border-b border-zinc-200 bg-white p-4 data-[state=open]:bottom-0 data-[state=open]:h-screen lg:right-auto lg:w-80 lg:border-r lg:px-5 lg:py-8 lg:data-[state=closed]:bottom-0 lg:data-[state=closed]:h-screen">
+    <Collapsible.Root
+      className="fixed left-0 right-0 top-0 z-20 flex flex-col gap-6 border-b border-zinc-200 
+      bg-white p-4 data-[state=open]:bottom-0 data-[state=open]:h-screen 
+      dark:border-zinc-700 dark:bg-zinc-900 lg:right-auto lg:w-80 lg:border-r lg:px-5 
+      lg:py-8
+      lg:data-[state=closed]:bottom-0 lg:data-[state=closed]:h-screen"
+    >
       <div className="flex items-center justify-between">
-        <strong className="flex items-center gap-2 text-xl font-semibold text-zinc-900">
+        <strong className="flex items-center gap-2 text-xl font-semibold text-zinc-900 dark:text-zinc-100">
           <Image src={logo} alt="" />
           <span>Untitled UI</span>
         </strong>
@@ -50,6 +56,8 @@ export function Sidebar() {
             <NavItems title="Settings" icon={Cog} />
           </nav>
           <UsedSpaceWidget />
+          <div className="h-px bg-zinc-200 dark:bg-zinc-700" />
+
           <Profile />
         </div>
       </Collapsible.Content>
